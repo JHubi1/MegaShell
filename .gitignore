@@ -1,0 +1,4 @@
+.env
+compiler/output
+compiler/installer/windows/output
+**/__pycache__
