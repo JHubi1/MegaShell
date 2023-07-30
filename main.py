@@ -7,6 +7,7 @@ from time import sleep as wait
 import yaml
 import glob
 import importlib
+import re
 
 dotenv.load_dotenv()
 
@@ -17,6 +18,7 @@ from files.internal import console as con
 from files.internal import outputLibrary as ol
 from files.internal import system as s
 from files.internal import commands as c
+from files.internal import constants as const
 from files.argparser import argparser as a
 from files.commandtools import commandtools as ct
 from files import debugger as d
@@ -65,12 +67,18 @@ def run_command(name: str, args: list | tuple):
 ol.restore()
 
 while True:
+    ui = ""
     try: ui = t.finput(colored("<", s.color()) + colored(s.friendlyPath(), "yellow") + colored("> ", s.color())).strip()
-    except: pass
+    except:
+        print("")
 
     if ui != "":
         commands = ui.split(" && ")
         for command in commands:
+            for key, value in const.constants.items():
+                try:
+                    command = command.replace("%{}%".format(key), value)
+                except: pass
             runCommand = command.split(" ")
             runCommandName = runCommand.pop(0)
             runCommandArgs = runCommand

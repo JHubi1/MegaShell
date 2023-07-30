@@ -3,7 +3,15 @@ from .internal import outputLibrary as ol
 from .help import info as ol
 
 class __commandtools:
-    def parse(self, extra: dict, *args, codeOnWrongArguments="") -> tuple | str:
+    def parse(self, extra: dict, *args) -> tuple | str:
+        """Translate a dictionary to valiebles.
+
+        Args:
+            extra (dict): The dictionary with a key `extra`.
+
+        Returns:
+            tuple | str: The finished variales.
+        """
         argsDone = []
         extra = extra["extra"]
         try:

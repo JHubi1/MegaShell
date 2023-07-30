@@ -1,5 +1,13 @@
 class __argparser:
     def parse(self, args: list) -> tuple:
+        """Parses a list of strings to a tuple.
+
+        Args:
+            args (list): A list of strings to parse.
+
+        Returns:
+            tuple: The parsed values.
+        """
         finishedText = {}
         otherArguments = []
         args.append("")
