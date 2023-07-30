@@ -7,7 +7,7 @@ import re
 import datetime
 
 class __info:
-    VERSION = "0.0.1"
+    VERSION = "0.0.1 Alpha"
     AUTHOR = "Xenia Software, Inc."
     LICENSE = "Apache License 2.0"
     LICENSE_WITH_PATH = "Apache License 2.0 (View in '" + os.path.abspath("LICENSE") + "')"
