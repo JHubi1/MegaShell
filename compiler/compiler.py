@@ -87,7 +87,7 @@ commands = [
     'rmdir /S /Q "' + os.path.abspath("build") + '";;;rm -rf "' + os.path.abspath("build") + '"',
 
     # IMPORTANT: ISCC must be in path!
-    'ISCC /O+ /DMyAppVersion="' + appVersion + '" "' + os.path.abspath("../../../installer/windows/MegaShellSetup.iss") + '";;;echo Installer creation not supported in Linux.'
+    'ISCC /O+ /DMyAppVersion="' + appVersion + '" /DMainPath="' + os.path.abspath("../../../..") + '" /DExeVersion="' + appVersion.replace(" ", "").replace(".", "-") + '" "' + os.path.abspath("../../../installer/windows/MegaShellSetup.iss") + '";;;echo Installer creation not supported in Linux.'
 ]
 
 fline()
@@ -107,7 +107,7 @@ for command in commands:
 end_time = time.time() - start_time
 
 fprint("Compilation finished!")
-fprint(colored("Total time: " + str(end_time) + "s", "green"))
+fprint(colored("Total time: " + str(round(end_time, 2)) + "s", "green"))
 
 fpause()
 clear()

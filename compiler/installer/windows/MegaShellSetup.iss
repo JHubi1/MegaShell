@@ -9,6 +9,9 @@
 #define MyAppAssocExt ".mse"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
+;#define MainPath ""
+#define ExeVersion "0.0.1"
+
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
@@ -20,15 +23,15 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={autopf}\{#MyAppName}
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
-LicenseFile=C:\Users\jakob\Desktop\Desktop\Ordner\Python\71 MegaShell\compiler\installer\^files\license.txt
+LicenseFile={#MainPath}\compiler\installer\^files\license.txt
 ;InfoBeforeFile=C:\Users\jakob\Desktop\Desktop\Ordner\Python\71 MegaShell\compiler\installer\^files\before.txt
 ;InfoAfterFile=C:\Users\jakob\Desktop\Desktop\Ordner\Python\71 MegaShell\compiler\installer\^files\after.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=C:\Users\jakob\Desktop\Desktop\Ordner\Python\71 MegaShell\compiler\installer\windows\output
-OutputBaseFilename=MyShellSetupV{#MyAppVersion}
-SetupIconFile=C:\Users\jakob\Desktop\Desktop\Ordner\Python\71 MegaShell\images\^logos\logo.ico
+OutputDir={#MainPath}\compiler\installer\windows\output
+OutputBaseFilename={#MyAppName}SetupV{#ExeVersion}
+SetupIconFile={#MainPath}\images\^logos\logo.ico
 ; Uncomment the following lines to encrypt the installer.
 ;Password=U4sjefNMKmF7hX0xR1XKbG7grOarPb89Z15OOj6ADxW8CtEgAk
 ;Encryption=yes
@@ -36,7 +39,7 @@ Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
 DisableWelcomePage=no
-WizardImageFile="C:\Users\jakob\Desktop\Desktop\Ordner\Python\71 MegaShell\images\banner\banner.bmp"
+WizardImageFile="{#MainPath}\images\banner\banner.bmp"
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -70,9 +73,9 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\jakob\Desktop\Desktop\Ordner\Python\71 MegaShell\compiler\output\0.0.1\windows\MegaShell\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\jakob\Desktop\Desktop\Ordner\Python\71 MegaShell\compiler\output\0.0.1\windows\MegaShell\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\jakob\Desktop\Desktop\Ordner\Python\71 MegaShell\images\^logos\logo.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MainPath}\compiler\output\{#MyAppVersion}\windows\MegaShell\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MainPath}\compiler\output\{#MyAppVersion}\windows\MegaShell\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MainPath}\images\^logos\logo.ico"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
